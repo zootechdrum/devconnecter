@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('config');
+
+//Using the config package we can can get MogoURI defined in config file. 
 const db = config.get("mongoURI");
 
 const connectDB = async () => {
