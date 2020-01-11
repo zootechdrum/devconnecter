@@ -10,7 +10,10 @@ router.post('/',[
     check('email', "Please include a valid email").isEmail().
     check('password','Please enter a password with 6 or more charechters')
 ], (req,res) => {
-    console.log(req.body)
+    const erros = validationResult(req)
+    if(!erros.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
 res.send('Auth route');
 })
 
