@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://zootechdrum951:Deleteurspam951@cluster0-flyis.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://zootechdrum951:Deleteurspam951@cluster0-flyis.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken"
 }
