@@ -3,12 +3,13 @@ const router = express.Router();
 const Profile = require("../../Models/Profile");
 const User = require("../../Models/Users")
 const auth = require("../../middleware/auth")
+const { check, validationResult } = require('express-validator/check')
 
 
 //@route    GET api/profile/me
 //@desc     Test route
 //@access   Public
-router.get('/', auth, async (req,res) => {
+router.get('/me', auth, async (req,res) => {
 
     try {
         const profile = await Profile.findOne({ user: req.user.id}).populate('user', ['name','avatar']);
@@ -25,5 +26,17 @@ router.get('/', auth, async (req,res) => {
     }
 
 })
+
+
+router.post('/',
+    [auth,      
+        [
+            check('status',"Status is required").not().isEmpty(),
+            check('skills',"Skills is required").not().isEmpty()
+        ]
+    ],
+   async (req, res) => {}
+);
+            
 
 module.exports = router;
