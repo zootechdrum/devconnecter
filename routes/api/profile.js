@@ -73,8 +73,7 @@ router.post('/',
         if (twitter) profileFields.social.twitter = twitter;
         if (facebook) profileFields.social.facebook = facebook;
         if (linkedin) profileFields.social.linkedin = linkedin;
-        if (instagram) profileFields.social.instagram = instagram; const profileFields = {};
-        profileFields.user = req.user.id;
+        if (instagram) profileFields.social.instagram = instagram; 
         if (company) profileFields.company = company;
         if (website) profileFields.website = website;
         if (location) profileFields.location = location;
@@ -117,6 +116,17 @@ router.post('/',
         }
     }
 );
+
+router.get("/", async (req, res) => {
+    try{
+        console.log("J")
+        const profiles = await Profile.find().populate('user',['name','avatar']);
+        res.json(profiles);
+    } catch(err) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+})
 
 
 module.exports = router;
