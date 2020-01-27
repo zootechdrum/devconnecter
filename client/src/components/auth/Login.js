@@ -14,7 +14,7 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if(password !== password2){
+        if(password){
             console.log("Success")
         }
     }
@@ -45,7 +45,7 @@ const Login = () => {
                 <input type="submit" className="btn btn-primary" value="Login" />
             </form>
             <p className="my-1">
-                Doon't have an account? <a href="login.html">Sign In</a>
+                Doon't have an account? <Link to="/register">Sign Up</Link>
             </p>
         </Fragment>
     )
