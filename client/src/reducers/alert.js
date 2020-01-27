@@ -1,9 +1,9 @@
-cons
+
 
 const inititalState = [];
 
 export default function(state = inititalState, action){
-    const { type, payoad } = action
+    const { type, payload } = action
     switch(type) {
         case SET_ALERT:
                 return [...state, action];

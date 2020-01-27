@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setAlert } from '../../actions/alert'
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
 
     const [formData, setFormData] = useState({
         name:'',
@@ -19,7 +20,7 @@ const Register = () => {
     const onSubmit = e => {
         e.preventDefault();
         if(password !== password2){
-            console.log("pass does not matcch")
+            setAlert('Passwords do not match')
         }else {
             console.log(formData)
         }
@@ -78,4 +79,9 @@ const Register = () => {
         </Fragment>
     )
 }
-export default connect()(Register);
+
+Register.PropTypes = {
+    setAlert: PropTypes.func.isRequired
+}
+
+export default connect(null,{ setAlert })(Register);
