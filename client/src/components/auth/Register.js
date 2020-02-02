@@ -20,7 +20,7 @@ const Register = ({ setAlert }) => {
     const onSubmit = e => {
         e.preventDefault();
         if(password !== password2){
-            setAlert('Passwords do not match')
+            setAlert('Passwords do not match', 'danger')
         }else {
             console.log(formData)
         }
@@ -78,10 +78,13 @@ const Register = ({ setAlert }) => {
             </p>
         </Fragment>
     )
-}
+};
 
-Register.PropTypes = {
+Register.propTypes = {
     setAlert: PropTypes.func.isRequired
 }
 
-export default connect(null,{ setAlert })(Register);
+export default connect(
+    null, 
+        { setAlert }
+        )(Register);
